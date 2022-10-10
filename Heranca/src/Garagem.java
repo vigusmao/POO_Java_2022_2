@@ -9,8 +9,10 @@ public class Garagem {
     }
 
     public void estacionarVeiculo(Veiculo veiculo) {
-        veiculo.setNumeroDeRodas(500);
+        veiculo.andar(15);
+//        veiculo.desligar();
         veiculosEstacionados.add(veiculo);
+
     }
 
     public String toString() {
@@ -31,5 +33,4 @@ public class Garagem {
 
         return sb.toString();
     }
-
 }

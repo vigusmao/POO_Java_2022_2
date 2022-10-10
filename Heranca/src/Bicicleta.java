@@ -6,4 +6,12 @@ public class Bicicleta extends Veiculo {
         super("Bicicleta da marca " + marca, 2);
         this.comRodinhas = comRodinhas;
     }
+
+    @Override
+    public void andar(float velocidadeEmKmh) {
+        System.out.println(
+                "Pedalando a " +
+                        velocidadeEmKmh + " km/h");
+    }
+
 }

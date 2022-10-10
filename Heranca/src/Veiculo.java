@@ -1,4 +1,4 @@
-public class Veiculo extends Object {
+public abstract class Veiculo extends Object {
 
     private int numeroDeRodas;
 
@@ -28,6 +28,8 @@ public class Veiculo extends Object {
     public void setNumeroDeRodas(int numeroDeRodas) {
         this.numeroDeRodas = numeroDeRodas;
     }
+
+    public abstract void andar(float velocidadeEmKmh);
 
     @Override
     public String toString() {
