@@ -10,7 +10,8 @@ public class AritmeticaBasica {
      * @param y um inteiro positivo
      * @return o mdc
      */
-    public static int calcularMaximoDivisorComum(int x, int y) {
+    public static int calcularMaximoDivisorComum(
+            int x, int y) {
         if (x <= 0 || y <= 0) {
             throw new RuntimeException("Os parâmetros precisam ser positivos.");
         }

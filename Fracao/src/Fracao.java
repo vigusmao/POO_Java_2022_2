@@ -1,6 +1,12 @@
+import org.junit.Test;
+
 import java.util.Objects;
 
 public class Fracao {
+
+    private int numerador;
+    private int denominador;
+    private boolean sinal;
 
     /**
      * Cria uma fração. O sinal da fração será inferido a partir dos sinais
@@ -13,6 +19,9 @@ public class Fracao {
      * @param denominador um inteiro diferente de zero
      */
     public Fracao(int numerador, int denominador) {
+        this.numerador = Math.abs(numerador);
+        this.denominador = Math.abs(denominador);
+        this.sinal = numerador * denominador >= 0;
     }
 
     /**
@@ -34,7 +43,7 @@ public class Fracao {
      * @return um inteiro não-negativo
      */
     public int getNumerador() {
-        return 0;  // ToDo IMPLEMENT ME!
+        return numerador;  // ToDo IMPLEMENT ME!
     }
 
     /**
@@ -43,7 +52,7 @@ public class Fracao {
      * @return um inteiro positivo
      */
     public int getDenominador() {
-        return 0;  // ToDo IMPLEMENT ME!
+        return denominador;  // ToDo IMPLEMENT ME!
     }
 
     /**
@@ -52,11 +61,15 @@ public class Fracao {
      * @return true, se a fração for não-negativa; false, se for negativa
      */
     public boolean getSinal() {
-        return false;  // ToDo IMPLEMENT ME!
+        return sinal;  // ToDo IMPLEMENT ME!
     }
 
     public double getValorNumerico() {
-        return 0;  // ToDo IMPLEMENT ME!
+        double valor = numerador / (double) denominador;
+        if (!sinal) {
+            valor *= -1;
+        }
+        return valor;
     }
 
     /**
@@ -106,5 +119,19 @@ public class Fracao {
      */
     public void simplificar() {
         // ToDo IMPLEMENT ME!
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s%d/%d",
+                this.sinal ? "" : "-",
+                this.numerador,
+                this.denominador);
+    }
+
+    public void copyFrom(Fracao outra) {
+        this.numerador = outra.getNumerador();
+        this.denominador = outra.getDenominador();
+        this.sinal = outra.getSinal();
     }
 }

@@ -27,7 +27,12 @@ public class FracaoTest {
         Fracao fracao1 = new Fracao(1, 2);
         Fracao fracao2 = new Fracao(1, 2);
         assertFalse(fracao1 == fracao2);
-        assertTrue(fracao1.equals(fracao2));  // o equals default é ==
+        assertTrue("Frações com o mesmo numerador," +
+                " denominador e sinal devem ser consideradas" +
+                " iguais (equals)",
+                fracao1.equals(fracao2));
+        // o equals default é ==
+
     }
 
     @Test
@@ -35,7 +40,9 @@ public class FracaoTest {
         Fracao fracao1 = new Fracao(1, 2);
         Fracao fracao2 = new Fracao(2, 4);
         assertFalse(fracao1 == fracao2);
-        assertTrue(fracao1.equals(fracao2));
+        assertTrue("Frações numericamente equivalentes" +
+                " devem ser consideradas iguais (equals)",
+                fracao1.equals(fracao2));
     }
 
     @Test
@@ -50,7 +57,12 @@ public class FracaoTest {
     public void testarFracaoIgualAZero() {
         Fracao fracao = new Fracao(0, 678);
         assertEquals(0, fracao.getNumerador());
-        assertEquals(1, fracao.getDenominador());
+        assertEquals("Frações iguais a zero deverão" +
+                " sempre apresentar denominador 1",
+                1, fracao.getDenominador());
+        assertTrue("Frações iguais a zero deverão" +
+                " retornar sinal positivo (true)",
+                fracao.getSinal());
     }
 
     @Test
@@ -130,6 +142,17 @@ public class FracaoTest {
         assertEquals(5, fracao.getNumerador());
         assertEquals(18, fracao.getDenominador());
         assertFalse(fracao.getSinal());
+    }
+
+    @Test
+    public void testarSimplificacaoParaFracaoIgualAZero() {
+        Fracao fracao = new Fracao(0, 7);
+
+        fracao.simplificar();
+
+        assertEquals(0, fracao.getNumerador());
+        assertEquals(1, fracao.getDenominador());
+        assertTrue(fracao.getSinal());
     }
 
     @Test
@@ -244,32 +267,32 @@ public class FracaoTest {
         assertEquals("0", fracao.toString());
     }
 
-    @Test
-    public void testarComparacao() {
-        assertTrue(umMeio.compareTo(umMeio) == 0);
-        assertTrue(umMeio.compareTo(menosDoisTercos) > 0);
-        assertTrue(umMeio.compareTo(zero) > 0);
-
-        assertTrue(menosDoisTercos.compareTo(umMeio) < 0);
-        assertTrue(menosDoisTercos.compareTo(menosDoisTercos) == 0);
-        assertTrue(menosDoisTercos.compareTo(zero) < 0);
-
-        assertTrue(zero.compareTo(umMeio) < 0);
-        assertTrue(zero.compareTo(menosDoisTercos) > 0);
-        assertTrue(zero.compareTo(zero) == 0);
-    }
-
-    @Test
-    public void testarOrdenacao() {
-        List<Fracao> lista = new ArrayList<>();
-        lista.add(umMeio);
-        lista.add(menosDoisTercos);
-        lista.add(zero);
-
-        Collections.sort(lista);
-
-        assertEquals(menosDoisTercos, lista.get(0));
-        assertEquals(zero, lista.get(1));
-        assertEquals(umMeio, lista.get(2));
-    }
+//    @Test
+//    public void testarComparacao() {
+//        assertTrue(umMeio.compareTo(umMeio) == 0);
+//        assertTrue(umMeio.compareTo(menosDoisTercos) > 0);
+//        assertTrue(umMeio.compareTo(zero) > 0);
+//
+//        assertTrue(menosDoisTercos.compareTo(umMeio) < 0);
+//        assertTrue(menosDoisTercos.compareTo(menosDoisTercos) == 0);
+//        assertTrue(menosDoisTercos.compareTo(zero) < 0);
+//
+//        assertTrue(zero.compareTo(umMeio) < 0);
+//        assertTrue(zero.compareTo(menosDoisTercos) > 0);
+//        assertTrue(zero.compareTo(zero) == 0);
+//    }
+//
+//    @Test
+//    public void testarOrdenacao() {
+//        List<Fracao> lista = new ArrayList<>();
+//        lista.add(umMeio);
+//        lista.add(menosDoisTercos);
+//        lista.add(zero);
+//
+//        Collections.sort(lista);
+//
+//        assertEquals(menosDoisTercos, lista.get(0));
+//        assertEquals(zero, lista.get(1));
+//        assertEquals(umMeio, lista.get(2));
+//    }
 }
