@@ -19,9 +19,9 @@ public class Fracao {
      * @param denominador um inteiro diferente de zero
      */
     public Fracao(int numerador, int denominador) {
-        this.numerador = Math.abs(numerador);
-        this.denominador = Math.abs(denominador);
-        this.sinal = numerador * denominador >= 0;
+        this(Math.abs(numerador),
+                Math.abs(denominador),
+                numerador * denominador >= 0);
     }
 
     /**
@@ -34,7 +34,17 @@ public class Fracao {
      * @param denominador um inteiro positivo
      * @param sinal true, se positiva (ou zero); false, se negativa
      */
-    public Fracao(int numerador, int denominador, boolean sinal) {  // overload do construtor
+    public Fracao(int numerador, int denominador, boolean sinal) {
+        if (numerador < 0) {
+            throw new RuntimeException("O numerador precisa ser não-negativo");
+        }
+        if (denominador <= 0) {
+            throw new RuntimeException("O denominador precisa ser positivo");
+        }
+
+        this.numerador = numerador;
+        this.denominador = numerador == 0 ? 1 : denominador;
+        this.sinal = numerador == 0 || sinal;
     }
 
     /**
@@ -80,7 +90,18 @@ public class Fracao {
      *         ou esta própria fração (this), caso ela própria já seja irredutível
      */
     public Fracao getFracaoIrredutivel() {
-        return null;  // ToDo IMPLEMENT ME!
+
+        if (numerador == 0) {
+            return this;
+        }
+
+        int mdc = AritmeticaBasica.calcularMaximoDivisorComum(
+                numerador, denominador);
+
+        Fracao fracaoIrredutivel = new Fracao(
+                this.numerador / mdc,
+                this.denominador / mdc,
+                this.sinal);
     }
 
     /**
@@ -118,13 +139,29 @@ public class Fracao {
      * tornando-a irredutível (e equivalente à fração original)
      */
     public void simplificar() {
-        // ToDo IMPLEMENT ME!
+        if (this.numerador == 0) {
+            return;  // não há o que simplificar aqui!
+        }
+
+        int mdc = AritmeticaBasica.calcularMaximoDivisorComum(
+                this.numerador, this.denominador);
+
+        this.numerador /= mdc;
+        this.denominador /= mdc;
+    }
+
+    private String getSinalAsString() {
+        return this.sinal ? "" : "-";
     }
 
     @Override
     public String toString() {
+        if (denominador == 1 || numerador == 0) {
+            return getSinalAsString() + numerador;
+        }
+
         return String.format("%s%d/%d",
-                this.sinal ? "" : "-",
+                getSinalAsString(),
                 this.numerador,
                 this.denominador);
     }

@@ -9,8 +9,6 @@ public class Principal {
 
         y.copyFrom(x);
 
-        y.setNumerador(7);
-
         System.out.println(x);
         System.out.println(y);
 
