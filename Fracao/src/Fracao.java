@@ -102,6 +102,8 @@ public class Fracao {
                 this.numerador / mdc,
                 this.denominador / mdc,
                 this.sinal);
+
+        return fracaoIrredutivel;
     }
 
     /**

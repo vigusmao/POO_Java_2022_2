@@ -1,20 +1,20 @@
+import java.util.Scanner;
+
 public class Principal {
 
     public static void main(String[] args) {
 
-        Fracao x, y;
+        Scanner sc = new Scanner(System.in);
 
-        x = new Fracao(1, 2);
-        y = new Fracao(2, 3);
+        System.out.println("\nNumerador: ");
+        int numerador = sc.nextInt();
+        System.out.println("\nDenominador: ");
+        int denominador = sc.nextInt();
 
-        y.copyFrom(x);
+        Fracao x;
+
+        x = new Fracao(numerador, denominador);
 
         System.out.println(x);
-        System.out.println(y);
-
-
-
-
-
     }
 }
