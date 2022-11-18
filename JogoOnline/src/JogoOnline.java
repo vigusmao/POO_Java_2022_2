@@ -29,6 +29,7 @@ public class JogoOnline {
         Jogador jogador = encontrarJogador(username);
         if (jogador != null) {
             throw new RuntimeException("Jogador já existe!!!");
+            // ToDo trocar para checked exception -- não é bug do sistema!
         }
 
         jogador = new Jogador(username, senha);
@@ -40,12 +41,13 @@ public class JogoOnline {
     public void login(String username, String senha) {
         Jogador jogador = encontrarJogador(username);
         if (jogador == null) {
+            // ToDo lançar exceção!
             return;  // jogador não-cadastrado!
         }
 
         if (jogador.getSenha().equals(senha)) {
             jogador.setOnline(true);
-        }
+        }  // ToDo lançar exceção!
     }
 
     public void logout(String username) {
@@ -63,7 +65,7 @@ public class JogoOnline {
                 jogador1.isJogando() ||
                 !jogador2.isOnline() ||
                 jogador2.isJogando()) {
-            return null;
+            return null;  // ToDo lançar exceção com o motivo!
         }
 
         Partida novaPartida = new Partida(jogador1, jogador2);
@@ -74,6 +76,7 @@ public class JogoOnline {
         return novaPartida;
     }
 
+    // ToDo escrever o javadoc desse método
     public Jogador escolherAdversario(Jogador solicitante) {
         for (Jogador j : this.jogadores) {
             if (!j.equals(solicitante) &&
@@ -87,6 +90,8 @@ public class JogoOnline {
 
     public void encerrarPartida(Partida partida,
                                 int resultado) {
+        // ToDO lançar exceção se partida já concluída
+        // ToDo escrever unit test para isso
         partida.setResultado(resultado);
     }
 }
