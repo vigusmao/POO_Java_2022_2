@@ -10,7 +10,7 @@ public abstract class Estabelecimento implements Avaliavel {
         return getClass().getName();
     }
 
-    public void receberAvaliacao(Avaliador avaliador,
+    public void receberAvaliacao(Avaliador<> avaliador,
                                  int nota) {
         AvaliacaoRecebida novaAvaliacao =
                 new AvaliacaoRecebida(avaliador, nota);
