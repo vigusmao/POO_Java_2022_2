@@ -15,11 +15,22 @@ public class FracaoTest {
     private Fracao menosDoisTercos;
     private Fracao zero;
 
-    @Before
-    public void setUp() {
-        umMeio = new Fracao(1, 2);
-        menosDoisTercos = new Fracao(2, 3, false);
-        zero = new Fracao(0, 23423);
+//    @Before
+//    public void setUp() {
+//        umMeio = new Fracao(1, 2);
+//        menosDoisTercos = new Fracao(2, 3, false);
+//        zero = new Fracao(0, 23423);
+//    }
+
+    @Test
+    public void testarFracaoComDenominadorZero() {
+        try {
+            Fracao fracao = new Fracao(7, 0);
+            fail("Esperamos uma IllegalArgumentException se o denominador for zero");
+
+        } catch (IllegalArgumentException e) {
+            // Tudo OK!!!
+        }
     }
 
     @Test

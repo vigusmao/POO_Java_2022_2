@@ -33,13 +33,15 @@ public class Fracao {
      * @param numerador um inteiro qualquer não-negativo
      * @param denominador um inteiro positivo
      * @param sinal true, se positiva (ou zero); false, se negativa
+     *
+     * @throws IllegalArgumentException para numeradores ou denominadores inválidos
      */
     public Fracao(int numerador, int denominador, boolean sinal) {
         if (numerador < 0) {
-            throw new RuntimeException("O numerador precisa ser não-negativo");
+            throw new IllegalArgumentException("O numerador precisa ser não-negativo");
         }
         if (denominador <= 0) {
-            throw new RuntimeException("O denominador precisa ser positivo");
+            throw new IllegalArgumentException("O denominador precisa ser positivo");
         }
 
         this.numerador = numerador;
