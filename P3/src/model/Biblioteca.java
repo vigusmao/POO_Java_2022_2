@@ -14,22 +14,26 @@ public class Biblioteca {
 
     private Map<Long, Pessoa> usuarioByCpf;  // mapa para guardar todos os usuários cadastrados (por cpf)
 
-    private Map<Livro, Integer> quantidadeByLivro;  // mapa para guardar quantas cópias de cada livro há nas estantes
-
     private int totalLivrosNasEstantes;  // contador para o total de livros nas estantes da biblioteca
 
     public Biblioteca(){
         this.usuarioByCpf = new HashMap<>();
-        this.quantidadeByLivro = new HashMap<>();
     }
 
+    /**
+     * Cadastra um novo usuário, caso não exista;
+     * se já existir, atualiza seus dados, sobrescrevendo nome e endereço no objeto
+     * que já existia com aquele CPF.
+     *
+     * @param usuario A Pessoa a ser cadastrada/atualizada como usuária desta biblioteca.
+     */
     public void cadastrarUsuario(Pessoa usuario) {
         long cpf = usuario.getCpf();
         Pessoa usuarioExistente = this.usuarioByCpf.get(cpf);
 
         if (usuarioExistente == null) {
             // o usuário informado é novo; vamos cadastrá-lo
-            this.usuarioByCpf.put(cpf, usuario);
+            // ToDo IMPLEMENT ME!!
 
         } else {
             // o usuário informado já existia; vamos atualizá-lo
@@ -39,11 +43,11 @@ public class Biblioteca {
     }
 
     public Pessoa getUsuario(long cpf){
-        return usuarioByCpf.get(cpf);
+        return null;  // ToDo IMPLEMENT ME!!
     }
 
     public int getTotalDeUsuariosCadastrados(){
-        return 0;
+        return 0;  // ToDo IMPLEMENT ME!!
     }
 
     /**
@@ -53,8 +57,9 @@ public class Biblioteca {
      * @param quantidade A quantidade desejada, que será adquirida e acrescentada à quantidade já existente
      *                   daquele livro na biblioteca (se o livro já existir na biblioteca)
      */
-    public void adquirirLivro(Livro livro, int quantidade){
-        // Use o Map quantidadeByLivro já declarado como atributo da model.Biblioteca e instanciado no construtor.
+    public void adquirirLivro(Livro livro, int quantidade) {
+        // ToDo IMPLEMENT ME!!
+        // Dica: adicione um Map quantidadeByLivro como atributo de Biblioteca.
     }
 
     /**
@@ -68,13 +73,13 @@ public class Biblioteca {
      *         a quantidade mínima do livro desejado para que ele possa ser emprestado
      *         (vide model.Biblioteca.MIN_COPIAS_PARA_PODER_EMPRESTAR)
      *
-     * @throws UsuarioNaoCadastradoException se o usuário não for cadastrado na biblioteca
+     * @throws UsuarioNaoCadastradoException se o usuário não for cadastrado nesta biblioteca
      * @throws LimiteEmprestimosExcedidoException se o usuário já está ultrapassou o número máximo permitido de
-     *                                            livros emprestados nessa biblioteca
+     *                                            livros emprestados nesta biblioteca para cada usuário
      */
     public boolean emprestarLivro(Livro livro, Pessoa usuario)
             throws UsuarioNaoCadastradoException, LimiteEmprestimosExcedidoException {
-        return false;
+        return false;  // ToDo IMPLEMENT ME!!
     }
 
     /**
@@ -87,18 +92,19 @@ public class Biblioteca {
      *                                    ou o livro não esteja emprestado para o usuário informado
      */
     public void receberDevolucaoLivro(Livro livro, Pessoa usuario) throws DevolucaoInvalidaException {
+        // ToDo IMPLEMENT ME!!
     }
 
     public int getQuantidadeDeLivrosDevidos(Pessoa usuario) {
-        return 0;
+        return 0;  // ToDo IMPLEMENT ME!!
     }
 
     public int getQuantidadeDeLivrosNasEstantes() {
-        // NÃO MODIFIQUE ESSE MÉTODO.
+        // ****** NÃO MODIFIQUE ESSE MÉTODO! ******
         return totalLivrosNasEstantes;
     }
 
     public int getQuantidadeDeLivrosNasEstantes(Livro livro) {
-        return 0;
+        return 0;  // ToDo IMPLEMENT ME!!
     }
 }

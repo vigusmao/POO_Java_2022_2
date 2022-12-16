@@ -40,13 +40,13 @@ public class Livro {
     public String toString() {
         switch (this.tipo) {
             case LIVRO_DIDATICO:
-                return String.format("model.Livro texto %s", this.titulo);
+                return String.format("Livro texto %s", this.titulo);
             case ENCICLOPEDIA:
                 return String.format("Enciclopédia %s", this.titulo);
             case LIVRO_DE_FICCAO:
             case LIVRO_DE_NAO_FICCAO:
             default:
-                return String.format("model.Livro %s, de %s (%d)", this.titulo, this.autor.getNome(), this.anoDePublicacao);
+                return String.format("Livro %s, de %s (%d)", this.titulo, this.autor.getNome(), this.anoDePublicacao);
         }
     }
 
